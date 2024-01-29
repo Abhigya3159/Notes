@@ -51,4 +51,14 @@
 * Neural networks - sums of non-linearly transformed linear models
 
 #### Statistical decision theory
-* Best prediction, when best is measured by average sqaure error, of Y at any point X = x is the conditional mean E(Y|X = x)
+* The criteria used to choose f such that error between Y and f(X) is minimised is the expected (i.e, average) squared prediction error.
+* Derivation
+  ![regression function derivation]()
+  Steps between equations 1 and 2
+  ![regression function derivation continued]()
+* Intuition
+  ![regression function intuition]()
+* Best prediction, when best is measured by average sqaure error, of Y at any point X = x is the conditional mean f(x) = E(Y|X = x).
+* KNN attempts to implement the above by averaging over sample data (equivalent to expectation) and conditioning on some region 'close' to target point (approximate conditioning 'at' a point)
+* 
+
