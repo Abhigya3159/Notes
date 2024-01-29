@@ -22,12 +22,12 @@
 * *i*th observed value of X is written as x<sub>i</sub>
 * Matrices e.g., a set of N input p-vectors x<sub>i</sub>, i = 1, ..., N would be represented by the N x p matrix **X**
 * Training data is represented as a set of measurements (x<sub>i</sub>, y<sub>i</sub>)
-* Scalar variable is represented with a subscript s in prefix <sub>s</sub>X
+* Predicted variable is represented with a subscript pred in prefix <sub>s</sub>X
 
 #### Linear models
 * Given X<sup>T</sup> = (X<sub>1</sub>, .... X<sub>p</sub>), we predict Y via the model ![Linear model]() which can be simplified to ![Simplified linear model]() by including the constant variable 1 in X and the bias/intercept B<sub>o</sub> in the vector of coefficients <sub>s</sub>B.
 * If Y is a K-vector, B would be a p x K matrix of coefficients
-* (X, <sub>s</sub>Y) represts a hyperplane in the (p+1) dimensional input/output space including the origin if the constant is included in X ![Hyperplane in 3D space]()
+* (X, <sub>pred</subY) represts a hyperplane in the (p+1) dimensional input/output space including the origin if the constant is included in X ![Hyperplane in 3D space]()
 
 ##### Least squares
 * The most popular method of fitting a linear model to training data is least squares
@@ -36,8 +36,19 @@
 * The derivation is as follows. Note w = B. The derivation makes use of the following matrix transpose and calculus properties/identities: a) X<sup>2</sup> = X<sup>T</sup>X b) (AB)<sup>T</sup> = B<sup>T</sup>A<sup>T</sup> c) ![quadratic matrix function derivative]() d) ![linear matrix function derivative]()
 ![Least Squares derivation]()
 * y<sub>i</sub> = x<sub>i</sub><sup>T</sup>B
-* In the case of one Gaussian per class (i.e., each class is generated from bivariate Gaussian distributions with uncorrelated components and different mean values), linear model is an almost optimal solution.
+* The fitted values can be converted to a fitted class a follows: class A if <sub>pred</sub></sub>Y > 0.5, class B if <sub>pred</sub>Y <= 0.5
+* In the case of one Gaussian per class, linear model is an almost optimal solution.
+![linear plot]()
 
 #### k-nearest-neighbours
 * Find k observations closest (often measured in terms of Euclidean distance) to x<sub>i</sub> in input space and average their responses. ![k-nearest-neighbours]()
-* 
+* More appropriate in the case where training data in each class comes from a mixture of low variance Guassian distributions.
+![knn plot]()
+
+#### Enhancements to LSMs and KNNs
+* Kernel methods - weights that decrease smoothly to zero with distance from target point as opposed to 0/1 weights used by KNN
+* Local regression - linear regression is applied to localized subsets of the data
+* Neural networks - sums of non-linearly transformed linear models
+
+#### Statistical decision theory
+* Best prediction, when best is measured by average sqaure error, of Y at any point X = x is the conditional mean E(Y|X = x)
