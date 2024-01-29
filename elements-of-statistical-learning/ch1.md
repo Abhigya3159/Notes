@@ -38,6 +38,6 @@
 * y<sub>i</sub> = x<sub>i</sub><sup>T</sup>B
 * In the case of one Gaussian per class (i.e., each class is generated from bivariate Gaussian distributions with uncorrelated components and different mean values), linear model is an almost optimal solution.
 
-### k-nearest-neighbours
+#### k-nearest-neighbours
 * Find k observations closest (often measured in terms of Euclidean distance) to x<sub>i</sub> in input space and average their responses. ![k-nearest-neighbours]()
 * 
