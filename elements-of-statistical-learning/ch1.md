@@ -51,7 +51,7 @@
 * Neural networks - sums of non-linearly transformed linear models
 
 #### Statistical decision theory
-* The criteria used to choose f such that error between Y and f(X) is minimised is the expected (i.e, average) squared prediction error.
+* The criteria used to choose f such that error between Y and f(X) is minimised is the expected (i.e, average) squared prediction error (EPE).
 * Derivation
   ![regression function derivation]()
   Steps between equations 1 and 2
@@ -60,5 +60,17 @@
   ![regression function intuition]()
 * Best prediction, when best is measured by average sqaure error, of Y at any point X = x is the conditional mean f(x) = E(Y|X = x).
 * KNN attempts to implement the above by averaging over sample data (equivalent to expectation) and conditioning on some region 'close' to target point (approximate conditioning 'at' a point)
-* 
+* As the dimension p gets large, so does the metric size of the k-nearest neighbourhood and in turn the rate of convergence of f(x) to E(Y|X = x) decreases.
+* Linear regression fits into this framework on the assumption that f(x) is well approximated by a globally linear function x<sup>T</sup>B. Subs. in EPE and differentiating wrt B we get, ![Solving for B](). Derivation:
+  EPE(f) = E[(Y - X<sup>T</sup>B)<sup>T</sup>(Y - X<sup>T</sup>B)]
+  EPE'(f) {wrt B} = E[X(Y - X<sup>T</sup>B)] = E[XY] - E[XX<sup>T</sup>B] = 0
+  E[XY] = BE[XX<sup>T</sup>]
+  B = E[(XX<sup>T</sup>)]<sup>-1</sup>E(XY)
+  [Refer back to least squares derivation]
+* When the loss function is L<sub>1</sub>: E|Y-f(X)|, the solution is the conditional median f(x) = median(Y|X = x)
+  
+
+##### Additive model
+* uses techniques such as k-nearest neighbors to approximate univariate conditional expectations simultaneously for each of the coordinate functions
+  ![additive model]()
 
